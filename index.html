@@ -806,8 +806,8 @@ html.vw-open,html.vw-open body{overflow:hidden}
 <style>.ilp{opacity:0;transform:translateY(8px);animation:ilpiece 0.5s cubic-bezier(.3,0,.2,1) forwards}
 .ilg{animation-delay:0.15s} .ili{animation-delay:0.5s} .ila{animation-delay:0.85s}
 .ilguia{fill:none;stroke:#C84B31;stroke-width:1.3;opacity:.7}
-.ilr{animation:ilslide 0.9s cubic-bezier(.4,0,.2,1) 1.4s forwards}
-.ilh{animation:ilslide 1.3s cubic-bezier(.45,0,.55,1) 2.4s forwards}
+.ilr{animation:ilslide 0.8s cubic-bezier(.4,0,.2,1) 1.4s forwards}
+.ilh{animation:ilslide 1s cubic-bezier(.45,0,.55,1) 2.2s forwards}
 @keyframes ilpiece{to{opacity:1;transform:none}}
 @keyframes ilslide{to{transform:translateX(1300px)}}
 @media (prefers-reduced-motion: reduce){.ilp{animation:none;opacity:1;transform:none}.ilguia{display:none}}</style>
@@ -2189,7 +2189,7 @@ html.vw-open,html.vw-open body{overflow:hidden}
   function startIntro(){
     var el=document.getElementById('intro');if(!el)return;
     el.querySelector('.skip').addEventListener('click',exitIntro);
-    introTimer=setTimeout(exitIntro,4000);   // el loader dura 3,7 s
+    introTimer=setTimeout(exitIntro,3500);   // el loader dura 3,2 s (W-17)
     var onAny=function(){exitIntro();window.removeEventListener('wheel',onAny);window.removeEventListener('touchmove',onAny);};
     window.addEventListener('wheel',onAny,{passive:true});window.addEventListener('touchmove',onAny,{passive:true});
   }
