@@ -1399,11 +1399,12 @@ html.vw-open,html.vw-open body{overflow:hidden}
   function fillGal(id,line){var g=document.getElementById(id);g.innerHTML=PROJECTS.filter(function(p){return p.line===line;}).map(card).join('');observe(g);}
   fillGal('galCasas','casas');fillGal('galInd','industrial');
 
-  // obras destacadas de la home: El Montañés fijo en el primer lugar (W-8V) y 3 al azar entre las demás, sin la del hero, una vez por visita (W-8J)
+  // obras destacadas de la home: El Montañés fijo en el primer lugar (W-8V) y 3 al azar entre las demás, sin la del hero, una vez por visita (W-8J).
+  // Por ahora, en el prototipo, solo las obras con fotos: sin las que no tienen imagen y sin los renders (W-80A)
   (function(){
-    var FIX='el-montanes',grid=document.getElementById('featGrid'),pool=PROJECTS.filter(function(p){return p.slug!=='refugio'&&p.slug!==FIX;}).map(function(p){return p.slug;}),pick=null;
-    try{pick=JSON.parse(sessionStorage.getItem('gi-feat4')||'null');}catch(e){}
-    if(!pick||pick.length!==4||pick[0]!==FIX||!pick.every(bySlug)){for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=pool[i];pool[i]=pool[j];pool[j]=t;}pick=[FIX].concat(pool.slice(0,3));try{sessionStorage.setItem('gi-feat4',JSON.stringify(pick));}catch(e){}}
+    var FIX='el-montanes',grid=document.getElementById('featGrid'),pool=PROJECTS.filter(function(p){return p.slug!=='refugio'&&p.slug!==FIX&&p.card&&p.note!=='Render';}).map(function(p){return p.slug;}),pick=null;
+    try{pick=JSON.parse(sessionStorage.getItem('gi-feat5')||'null');}catch(e){}
+    if(!pick||pick.length!==4||pick[0]!==FIX||!pick.every(bySlug)){for(var i=pool.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=pool[i];pool[i]=pool[j];pool[j]=t;}pick=[FIX].concat(pool.slice(0,3));try{sessionStorage.setItem('gi-feat5',JSON.stringify(pick));}catch(e){}}
     grid.innerHTML=pick.map(function(s){return card(bySlug(s));}).join('');observe(grid);
   })();
 
